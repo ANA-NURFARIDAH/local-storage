@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghapus</title>
+</head>
+<body>
+    <button onclick="add()">Tambah</button>
+    <br><br>
+
+    <ul id="data"></ul>
+
+    <script>
+        function add() {
+
+            var id = 0
+            var list = []
+
+            var data = {
+                name: 'Jhon Due',
+                age: 25,
+                address: 'Palembang'
+            }
+
+            //save data to localStorage
+            localStorage.setItem('personalData', JSON.stringify(data))
+
+            //get data and convert from string to array
+            var list = JSON.parse(localStorage.getItem('personalData'))
+
+            //show data
+            document.getElementById('data').innerHTML = 
+                `<li> ${list.name} | ${list.age} | ${list.address}</li>`
+            
+            //remove database on key
+            localStorage.removeItem('data');
+
+            //remove all data
+            localStorage.clear()
+
+        }
+        
+    </script>
+</body>
+</html>
